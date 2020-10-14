@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'timeclock.apps.TimeclockConfig',
     'users.apps.UsersConfig',
+    
 ]
 
 MIDDLEWARE = [
