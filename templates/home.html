@@ -8,17 +8,16 @@
 
 {% if user.is_authenticated %}
 
-    Hello, {{ user.username }}.
-
-    <p><a href="{% url 'logout' %}">Log Out</a></p>
+    <div class="mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 200px">
+      <p class="text-center font-italic text-light">
+        <span class="align-bottom">Hello, {{ user.username }}.</span></p>
+    </div>
 
 {% else %}
-
-    <p>You aren't logged in.</p>
-
-    <a href="{% url 'login' %}">Log In</a> |
-
-    <a href="{% url 'signup' %}">Sign Up</a>
+    <div class="mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 200px">
+      <p class="text-center font-italic text-light">
+        <span class="align-bottom">You are not logged in.</span></p>
+    </div>
 
 {% endif %}
 
