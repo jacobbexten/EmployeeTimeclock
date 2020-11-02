@@ -2,9 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.urls import reverse_lazy
-
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, ListView
 
 from .models import Clockin
 
@@ -14,7 +12,7 @@ class HomePageView(TemplateView):
 
     template_name = 'home.html'
 
-class ClockInOutView(CreateView):
+class ClockInOutView(ListView):
 
     model = Clockin
 

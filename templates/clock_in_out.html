@@ -9,15 +9,31 @@
 {% if user.is_authenticated %}
 
     <div class="mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 200px">
-      <p class="text-center font-italic text-light">
+      <p class="text-center font-italic font-weight-bold text-light">
         <span class="align-bottom">Clock In/Out</span></p>
     </div>
+    
+    
+    <form method="POST">
+      {% csrf_token %}
+      <input class="btn btn-primary btn-block" type="submit" name="btn" value="PUNCH IN/OUT" href="{% url 'clock_in_out' %}">
+    </form>
+    
 
-    <div class="mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 600px">
-      <h2>{{ object.title }}</h2>
-      <p>{{ object.author }} | {{ object.date }}</p>
-      <p>{{ object.notes }}</p>
+
+
+
+
+    {% for clockin in object_list %}
+    <div class="card">
+      <div class="card-header mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 600px">
+        <span class="font-weight-bold">{{ clockin.author }}</span> &middot;
+        <p>{{ clockin.date }}</p>
+      <p>{{ clockin.notes }}</p>
+      </div>
     </div>
+    {% endfor%}
+
 
 {% else %}
     <div class="mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 200px">

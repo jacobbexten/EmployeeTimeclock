@@ -22,3 +22,6 @@ class Clockin(models.Model):
     notes = models.CharField(max_length=100, default='', blank=True)
 
 
+    def ge_absolute_url(self):
+
+        return reverse('clock_in_out', args=[str(self.id)])
