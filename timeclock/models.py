@@ -21,4 +21,4 @@ class Clockin(models.Model):
 
     notes = models.CharField(max_length=100, default='', blank=True)
 
-    
+

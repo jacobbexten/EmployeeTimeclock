@@ -23,5 +23,7 @@ urlpatterns = [
 
     path('users/', include('django.contrib.auth.urls')),
 
+    path('clock_in_out', include('timeclock.urls')),
+
     path('', include('timeclock.urls')),
 ]
