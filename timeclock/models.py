@@ -6,8 +6,12 @@ from django.contrib.auth import get_user_model
 
 from django.urls import reverse
 
+from datetime import date
 
-class Clockin(models.Model):
+from django.utils import timezone
+
+
+class ClockInOut(models.Model):
 
     author = models.ForeignKey(
 
@@ -17,7 +21,9 @@ class Clockin(models.Model):
 
     )
 
-    date = models.DateTimeField(auto_now_add=True)
+    time = models.TimeField(default=timezone.localtime)
+
+    date = models.DateField(default=date.today)
 
     notes = models.CharField(max_length=100, default='', blank=True)
 
@@ -25,3 +31,4 @@ class Clockin(models.Model):
     def ge_absolute_url(self):
 
         return reverse('clock_in_out', args=[str(self.id)])
+

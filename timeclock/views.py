@@ -4,7 +4,9 @@ from django.shortcuts import render
 
 from django.views.generic import TemplateView, ListView
 
-from .models import Clockin
+from .models import ClockInOut
+
+import datetime
 
 
 
@@ -14,8 +16,21 @@ class HomePageView(TemplateView):
 
 class ClockInOutView(ListView):
 
-    model = Clockin
+    model = ClockInOut
 
     template_name = 'clock_in_out.html'
 
     fields = ('author', 'notes',)
+
+def timelog(request):
+
+    if request.method == "POST":
+
+        log = ClockInOut(request.POST)
+
+        if form.is_valid():
+
+            return render(request, 'timeclock/clock_in_out.html', context)
+                
+
+        
