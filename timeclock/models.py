@@ -32,3 +32,15 @@ class ClockInOut(models.Model):
 
         return reverse('clock_in_out', args=[str(self.id)])
 
+
+class Calendar(models.Model):
+
+    author = models.ForeignKey(
+
+        get_user_model(),
+
+        on_delete=models.CASCADE,
+
+    )
+
+
