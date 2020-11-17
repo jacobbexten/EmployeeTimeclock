@@ -1,1 +1,1 @@
-web: gunicorn timeclock.wsgi
+web: gunicorn timeclock.wsgi --log-file -
