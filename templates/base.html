@@ -1,5 +1,8 @@
 <!-- templates/base.html -->
 <!doctype html>
+
+{% load static %}
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -12,8 +15,8 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
-    <div class="p-3 mb-2 bg-light text-dark">
-    <title>{% block title %}Time Clock{% endblock title %}</title>
+    <div class="p-3 mb-2 bg-light text-dark font-weight-bold">
+    <title>{% block title %}Employee Time Clock{% endblock title %}</title>
   </head>
   <body>
     <nav class="navbar navbar-light" style="background-color: #ff9966;" font-size="100px">
@@ -26,7 +29,7 @@
   <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
 </svg>
       
-      Time Clock
+      Employee Time Clock
       
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -40,6 +43,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'clock_in_out' %}">Clock In/Out <span class="sr-only">(current)</span></a>
             <a class="nav-link" href="{% url 'calendar' %}">Time Off Request <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'entries' %}">Entries <span class="sr-only">(current)</span></a>
             <a class="nav-link dropdown-toggle" href="#" id="userMenu"
               data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">

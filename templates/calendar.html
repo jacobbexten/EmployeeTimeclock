@@ -13,10 +13,24 @@
         <span class="align-bottom">Time Off Request</span></h1>
     </div>
     
+    <div id="content-main">
+          <ul class="object-tools">
+            <li>
+                <a href={{ previous_month }}>
+                    Previous month
+                </a>
+            </li>
+            <li>
+                <a href={{ next_month }}>
+                    Next month
+                </a>
+            </li>
+        </ul>
+
+        {{ calendar }}
 
 
-
-
+    </div>
 
 
 {% else %}

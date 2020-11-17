@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
 
-from .models import ClockInOut, Calendar
+from .models import ClockInOut, Event
 
 import datetime
 
@@ -14,33 +14,42 @@ class HomePageView(TemplateView):
 
     template_name = 'home.html'
 
+
 class ClockInOutView(ListView):
+
+    model = ClockInOut
+
+    template_name = 'entries.html'
+
+class AllEntriesView(ListView):
+
+    model = ClockInOut
+
+    template_name = 'all_entries.html'
+
+class AddClockInOutView(CreateView):
 
     model = ClockInOut
 
     template_name = 'clock_in_out.html'
 
-    fields = ('author', 'notes',)
+    fields = ('options','notes',)
 
-class CalendarView(ListView):
+    def form_valid(self, form):
 
-    model = Calendar
+        form.instance.author = self.request.user
+
+        return super().form_valid(form)
+
+class EventView(ListView):
+
+    model = Event
 
     template_name = 'calendar.html'
 
-    fields = ('author',)
+    fields = '__all__'
 
 
-
-def timelog(request):
-
-    if request.method == "POST":
-
-        log = ClockInOut(request.POST)
-
-        if form.is_valid():
-
-            return render(request, 'timeclock/clock_in_out.html', context)
-                
+               
 
         

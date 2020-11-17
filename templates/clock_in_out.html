@@ -2,64 +2,34 @@
 
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Clock In/Out{% endblock title %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
 
+
     <div class="mx-auto shadow-lg w-100 m-3" style="background-color: #ff9966">
       <h1 class="text-center font-weight-bold">
         <span class="align-bottom">Clock In/Out</span></h1>
     </div>
-    
-    
 
-      <div class="container">
-        <div class="row">
-          <form method="POST" action="{% url 'clock_in_out' %}">
-            {% csrf_token %}
-          <div class="col">
-            <div class="btn-group btn-group-lg btn-group-toggle d-flex justify-content-left mb-3" data-toggle="buttons">
-              <label class="btn btn-dark">
-                <input type="radio" name="options" id="clockin" autocomplete="off"> PUNCH IN 
-              </label>
-              <label class="btn btn-dark">
-                <input type="radio" name="options" id="clockout" autocomplete="off"> PUNCH OUT 
-              </label>
-            </div>
-          </div>
-          <div class="col">
-            <div class="d-flex justify-content-right mb-3">
-              <input class="btn btn-dark btn-lg" type="submit" name="btn" value="SUBMIT">
-            </div>
-          </div>
-          </form>
-        </div>
-      </div>
-      
-
-
-
-
-
-
-
-    {% for clockinout in object_list %}
-    <div class="card" style="background-color: #ffccb3">
-      <div class="row card-header m-2 mw-100" style="background-color: #ff9966">
-        <h3 class="col text-left font-weight-bold">{{ clockinout.author }}</h3>
-        <div class="col">
-          <h3 class="text-right font-weight-bold">{{ clockinout.date }}</h3>
-        </div>
-      </div>
-          <div class="card-body" style="background-color: #ffeee6">
-            <h4 class="font-weight-bold">TIME - {{ clockinout.time }}</h4>
-            <div class="font-weight-bold">{{ clockinout.notes }}</div>
-          </div>
-      
+    <div class="w-100 m-3">
+      <h3 class="text-center font-weight-bold">
+        <span>{{ user.username }}</span>
     </div>
-    {% endfor%}
+
+    <div class="w-100 m-3">
+      <form class="text-center m-4" action="" method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+  
+        <button class="btn btn-dark btn-lg mt-4">SUBMIT</button>
+      </form>
+    </div>
 
 
 {% else %}

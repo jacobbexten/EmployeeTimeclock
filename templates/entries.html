@@ -1,0 +1,48 @@
+<!-- templates/entries.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Entries{% endblock title %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="mx-auto shadow-lg w-100 m-3" style="background-color: #ff9966">
+      <h1 class="text-center font-weight-bold">
+        <span class="align-bottom">Today's Entries</span></h1>
+ </div>
+
+    <div class="font-weight-bold">
+      <a href="{% url 'all_entries' %}" class="btn-secondary btn-sm btn-block active text-center mb-3" role="button" aria-pressed="true">GO TO ALL ENTRIES<a/>
+    </div>
+
+    {% for entries in object_list %}
+    {% if entries.date == entries.date.today %}
+    <div class="card border-dark mb-3" style="background-color: #ffccb3">
+      <div class="row card-header m-2 mw-100" style="background-color: #ff9966; height: 50px">
+        <h4 class="col text-left font-weight-bold">{{ entries.author }}</h4>
+        <div class="col">
+          <h4 class="text-right font-weight-bold">{{ entries.date }}</h4>
+        </div>
+      </div>
+          <div class="card-body" style="background-color: #ffeee6">
+            <h5 class="font-weight-bold">{{ entries.options }} {{ entries.time }}</h5>
+            <div class="font-weight-bold">{{ entries.notes }}</div>
+          </div>
+    </div>
+    {% endif %}
+    {% endfor%}
+
+
+
+
+{% else %}
+    <div class="mx-auto shadow-lg m-4" style="background-color: #ff9966; width: 200px">
+      <p class="text-center font-italic text-light">
+        <span class="align-bottom">You are not logged in.</span></p>
+    </div>
+
+{% endif %}
+
+{% endblock content %}

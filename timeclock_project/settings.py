@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'timeclock.apps.TimeclockConfig',
     'users.apps.UsersConfig',
+
     
 ]
 
@@ -123,6 +124,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
@@ -130,3 +133,5 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
