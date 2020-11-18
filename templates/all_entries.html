@@ -9,16 +9,17 @@
 {% if user.is_authenticated %}
 
 
-<div class="mx-auto shadow-lg w-100 m-3" style="background-color: #ff9966">
+<div class="mx-auto shadow-lg w-100 m-3 rounded" style="background-color: #ff9966">
       <h1 class="text-center font-weight-bold">
         <span class="align-bottom">All Entries</span></h1>
 </div>
 
-    <div class="font-weight-bold">
-      <a href="{% url 'entries' %}" class="btn-secondary btn-sm btn-block active text-center mb-3" role="button" aria-pressed="true">GO TO TODAY'S ENTRIES<a/>
+    <div class="font-weight-bold text-center mb-3">
+      <a href="{% url 'entries' %}" class="btn-secondary btn-sm active" role="button" aria-pressed="true">GO TO TODAY'S ENTRIES<a/>
     </div>
 
     {% for entries in object_list %}
+    {% if entries.author == request.user %}
     <div class="card border-dark mb-3" style="background-color: #ffccb3">
       <div class="row card-header m-2 mw-100" style="background-color: #ff9966; height: 50px">
         <h4 class="col text-left font-weight-bold">{{ entries.author }}</h4>
@@ -31,6 +32,7 @@
             <div class="font-weight-bold">{{ entries.notes }}</div>
           </div>
     </div>
+    {% endif %}
     {% endfor%}
 
 

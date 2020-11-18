@@ -65,8 +65,7 @@ class Event(models.Model):
         verbose_name_plural = u'Scheduling'
 
     def get_absolute_url(self):
-        url = reverse('%s_%s_change' % (self._meta.app_label, self._meta.model_name), args=[self.id])
-        return u'<a href="%s">%s</a>' % (url, str(self.start_time))
+        return 'calendar'
 
     list_display = ['day', 'notes']
     change_list_template = 'calendar.html'

@@ -1,0 +1,1 @@
+The users app contains models, forms, views and urls associated with employees (users). The user is able to sign up, login, or change password. This is all straight forward and in the templates there are html files associated with each page.

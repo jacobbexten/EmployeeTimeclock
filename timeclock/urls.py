@@ -5,7 +5,6 @@ from django.urls import path
 from .views import HomePageView, ClockInOutView, EventView, AddClockInOutView, AllEntriesView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
 
     path('', HomePageView.as_view(), name='home'),
 
